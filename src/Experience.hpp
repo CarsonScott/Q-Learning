@@ -5,8 +5,8 @@ struct Experience
 {
     int current_state;
     int action;
-    float reward;
     int next_state;
+    float reward;
 };
 
 #endif // EXPERIENCE_HPP_INCLUDED
