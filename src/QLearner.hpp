@@ -1,6 +1,7 @@
 #ifndef QLEARNER_HPP_INCLUDED
 #define QLEARNER_HPP_INCLUDED
-
+#include <ctime>
+#include <cstdlib>
 #include "Experience.hpp"
 #include "Table.hpp"
 
@@ -19,8 +20,8 @@ public:
     void initialize(int, int);
     void setState(int);
     void setAction(int);
-    void update(int, float);
-    int getAction();
+    void update(float, int);
+    int computeAction();
 };
 
 #endif // QLEARNER_HPP_INCLUDED

@@ -3,7 +3,7 @@
 int QLearner::getBestAction(int state)
 {
     int best_action = 0;
-    for(int i = 1; i < estimated_rewards[state].size(); i++)
+    for(int i = 0; i < estimated_rewards[state].size(); i++)
     {
         float max_reward = estimated_rewards[state][best_action];
         if(estimated_rewards[state][i] > max_reward)
@@ -43,19 +43,20 @@ void QLearner::setAction(int action)
     experience.action = action;
 }
 
-void QLearner::update(int reward, float state)
+void QLearner::update(float reward, int state)
 {
     experience.reward = reward;
     experience.next_state = state;
 
     float estimate = estimated_rewards[experience.current_state][experience.action];
     estimate += learning_rate*(experience.reward + discount*getMaxReward(experience.next_state) - estimate);
+    estimated_rewards[experience.current_state][experience.action] = estimate;
 
     experience.current_state = state;
-    experience.action = getBestAction(experience.current_state);
 }
 
-int QLearner::getAction()
+int QLearner::computeAction()
 {
+    experience.action = getBestAction(experience.current_state);
     return experience.action;
 }
