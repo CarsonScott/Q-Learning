@@ -1,7 +1,6 @@
 #ifndef QLEARNER_HPP_INCLUDED
 #define QLEARNER_HPP_INCLUDED
-#include <ctime>
-#include <cstdlib>
+
 #include "Experience.hpp"
 #include "Table.hpp"
 
